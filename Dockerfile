@@ -8,4 +8,6 @@ RUN npm install
 
 RUN npm run build
 
+ENTRYPOINT ["app"]
+
 CMD [ "node", "dist/index.js" ]
