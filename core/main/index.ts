@@ -66,13 +66,21 @@ const loadJSONFromGCSToBigquery = async (
 };
 
 (async () => {
-  const projectName = core.getInput("project_name");
-  const credentialFile = core.getInput("credential_file");
-  const region = core.getInput("region");
-  const bucketName = core.getInput("bucket_name");
-  const collectionName = core.getInput("collection_name");
-  const tableName = core.getInput("table_name");
-  const datasetName = core.getInput("dataset_name");
+  let projectName,
+    credentialFile,
+    region,
+    bucketName,
+    collectionName,
+    tableName,
+    datasetName;
+
+  projectName = core.getInput("project_name");
+  credentialFile = core.getInput("credential_file");
+  region = core.getInput("region");
+  bucketName = core.getInput("bucket_name");
+  collectionName = core.getInput("collection_name");
+  tableName = core.getInput("table_name");
+  datasetName = core.getInput("dataset_name");
 
   process.env.GOOGLE_APPLICATION_CREDENTIALS = credentialFile;
   console.log(`
