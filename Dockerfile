@@ -7,3 +7,5 @@ COPY ./ ./
 RUN npm install
 
 CMD [ "npm", "run", "build" ]
+
+ENTRYPOINT ["app"]
