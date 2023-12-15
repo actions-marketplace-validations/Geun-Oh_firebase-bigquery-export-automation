@@ -1,7 +1,7 @@
 name: Firestore data export
 on:
-  push:
-    branches: [main]
+  release:
+    types: [published]
 jobs:
   build:
     runs-on: ubuntu-latest
