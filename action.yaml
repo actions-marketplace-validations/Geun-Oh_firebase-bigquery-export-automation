@@ -1,0 +1,32 @@
+name: "Firestore Bigquery export Automation"
+description: "export firestore raw data to bigquery and query it"
+branding:
+  icon: "database"
+  color: "blue"
+
+inputs:
+  project_name:
+    description: "your google cloud project name"
+    required: true
+  credential_file:
+    description: "your credential file(.json)"
+    required: true
+  region:
+    description: "where your project located"
+    required: true
+  bucket_name:
+    description: "Google Cloud Storage bucket name"
+    required: true
+  collection_name:
+    description: "your collection name"
+    required: true
+  table_name:
+    description: "your table name"
+    required: true
+  dataset_name:
+    description: "your dataset name"
+    required: true
+
+runs:
+  using: docker
+  main: Dockerfile
