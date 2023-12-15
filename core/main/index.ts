@@ -66,45 +66,37 @@ const loadJSONFromGCSToBigquery = async (
 };
 
 (async () => {
-  let projectName,
-    credentialFile,
-    region,
-    bucketName,
-    collectionName,
-    tableName,
-    datasetName;
-
-  projectName = core.getInput("project_name");
-  credentialFile = core.getInput("credential_file");
-  region = core.getInput("region");
-  bucketName = core.getInput("bucket_name");
-  collectionName = core.getInput("collection_name");
-  tableName = core.getInput("table_name");
-  datasetName = core.getInput("dataset_name");
-
-  process.env.GOOGLE_APPLICATION_CREDENTIALS = credentialFile;
-  console.log(`
-  ===
-
-  project_name: ${projectName}
-  region: ${region}
-  bucket_name: ${bucketName}
-  collection_name: ${collectionName}
-  table_name: ${tableName}
-  dataset_name: ${datasetName}
-
-  ===`);
-
-  const options: BigQueryOptions = {
-    keyFilename: credentialFile,
-    projectId: projectName,
-  };
-
-  const bigquery = new BigQuery(options);
-  const firestore = new Firestore();
-  const storage = new Storage(options);
-
   try {
+    const projectName = core.getInput("project_name");
+    const credentialFile = core.getInput("credential_file");
+    const region = core.getInput("region");
+    const bucketName = core.getInput("bucket_name");
+    const collectionName = core.getInput("collection_name");
+    const tableName = core.getInput("table_name");
+    const datasetName = core.getInput("dataset_name");
+
+    process.env.GOOGLE_APPLICATION_CREDENTIALS = credentialFile;
+    console.log(`
+     ===
+   
+     project_name: ${projectName}
+     region: ${region}
+     bucket_name: ${bucketName}
+     collection_name: ${collectionName}
+     table_name: ${tableName}
+     dataset_name: ${datasetName}
+   
+     ===`);
+
+    const options: BigQueryOptions = {
+      keyFilename: credentialFile,
+      projectId: projectName,
+    };
+
+    const bigquery = new BigQuery(options);
+    const firestore = new Firestore();
+    const storage = new Storage(options);
+
     await exportFirestoreDataToGCS(
       collectionName,
       bucketName,
