@@ -1,0 +1,21 @@
+name: Firestore data export
+on:
+  push:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+      - uses: actions/checkout@v2
+
+      - name: Firestore data bigquery export automation
+        uses: Geun-Oh/firestore-bigquery-export-automation@0.1.0
+        with:
+          project_name: "drivingteacher-eeb82"
+          credential_file: ${{ secrets.TEST_CREDENTIAL_FILE }}
+          region: "asia-northeast3"
+          bucket_name: "drivingteacher_bigquery_analytics"
+          collection_name: "Order"
+          table_name: "order_1216"
+          dataset_name: "drivingteacher_research_data_export"
