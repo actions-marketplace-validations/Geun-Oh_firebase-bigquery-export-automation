@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Firestore Bigquery export Automation
-        uses: Geun-Oh/firebase-bigquery-export-automation@0.3.0
+        uses: Geun-Oh/firebase-bigquery-export-automation@0.4.0
         with:
           project_name: "drivingteacher-eeb82"
           credential_file: ${{ secrets.TEST_CREDENTIAL_FILE }}
